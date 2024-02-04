@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "a775d624-6128-4f6a-8f99-d2ee76186d26",
+		"name": "Assessment BIM Ventures",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8733060",
+		"_collection_link": "https://interstellar-rocket-988095.postman.co/workspace/Testing-APIs~b2d8b1e0-3186-4353-869c-ee0d27f494ce/collection/8733060-a775d624-6128-4f6a-8f99-d2ee76186d26?action=share&source=collection_link&creator=8733060"
+	},
+	"item": [
+		{
+			"name": "Get User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test('Response time is less than 200ms', function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"})\r",
+							"\r",
+							"pm.test('Check if the response contains omnis laborum odio', function () {\r",
+							"    pm.expect(pm.response.text()).to.include('omnis laborum odio');\r",
+							"})\r",
+							"\r",
+							".test(\"Check title of the first record\", function () {\r",
+							"  var jsonData = pm.response.json();\r",
+							"  var firstRecordTitle = jsonData[0].title;\r",
+							"  var expectedTitle = \"quidem molestiae enim\";\r",
+							"\r",
+							"  pm.expect(firstRecordTitle).to.eql(expectedTitle);\r",
+							"});\r",
+							"pm.test(\"Check the presence of userId field in the response\", function () {\r",
+							"  var jsonData = pm.response.json();\r",
+							"  pm.expect(jsonData[0]).to.have.property(\"userId\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/users/1/albums",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"albums"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
